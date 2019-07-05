@@ -6,12 +6,13 @@ RUN apk add --no-cache graphviz
 RUN echo "memory_limit = 2048M" >> /usr/local/etc/php/zzphaudit.ini \
     && echo "max_execution_time = -1" >> /usr/local/etc/php/conf.d/zzphaudit.ini
 
-RUN mkdir -p /var/www/.composer; \
-    chown www-data:www-data /var/www/.composer
+RUN mkdir -p /usr/local/composer/vendor/bin
 
-USER www-data
+ENV PATH /usr/local/composer/vendor/bin:$PATH
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_HOME /usr/local/composer
 
-RUN cd /var/www/.composer; \
+RUN cd /usr/local/composer; \
     composer global init --no-interaction; \
     composer global require --optimize-autoloader \
         bamarni/composer-bin-plugin \
@@ -38,8 +39,6 @@ RUN cd /var/www/.composer; \
         sensiolabs-de/deptrac \
         sensiolabs/security-checker; \
     composer clear-cache
-
-USER root
 
 ENTRYPOINT ["entrypoint"]
 WORKDIR /srv
