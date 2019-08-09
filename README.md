@@ -11,7 +11,6 @@ Docker image with useful tools to audit a PHP project.
 
 Don't share your local `.composer` folder to the container.
 
-
 ```bash
 $ docker run -it --rm \
     -v "$PWD":/srv \
@@ -23,13 +22,13 @@ $ docker run -it --rm \
 
 - [PHP Static Analysis Tool](https://github.com/phpstan/phpstan) as `phpstan`
 - [PhpDependencyAnalysis](https://github.com/mamuz/PhpDependencyAnalysis) as `phpda`
-- [Twig Coding Standards](https://github.com/allocine/twigcs) as `twigcs`
+- [Twig Coding Standards](https://github.com/friendsoftwig/twigcs) as `twigcs`
 - [PHP Coding Standards Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) as `php-cs-fixer`
 - [YAML Linter](https://github.com/HeahDude/yaml-linter) as `yaml-linter`
 - [PHP_Depend](https://github.com/pdepend/pdepend) as `pdepend`
 - [Phan](https://github.com/phan/phan) as `phan`
 - [PHP Mess Detector](https://github.com/phpmd/phpmd) as `phpmd`
-- [Deptrac](https://github.com/sensiolabs-de/deptrac) as ?
+- [Deptrac](https://github.com/sensiolabs-de/deptrac) as `deptrac`
 - [Security Checker](https://github.com/sensiolabs/security-checker) as `security-checker`
 
 ## More documentation ?

@@ -30,13 +30,13 @@ RUN cd /usr/local/composer; \
     composer bin php-dependency-analysis require --optimize-autoloader \
         mamuz/php-dependency-analysis; \
     composer bin symfony-friendly require --optimize-autoloader \
-        allocine/twigcs \
+        friendsoftwig/twigcs \
         friendsofphp/php-cs-fixer \
         heahdude/yaml-linter \
         pdepend/pdepend \
         phan/phan \
         phpmd/phpmd \
-        sensiolabs-de/deptrac \
+        sensiolabs-de/deptrac-shim \
         sensiolabs/security-checker; \
     composer clear-cache
 
