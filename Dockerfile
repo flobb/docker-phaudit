@@ -1,4 +1,4 @@
-FROM solune/symfony:7.4-cli
+FROM solune/symfony:7.4-alpine-cli
 
 RUN apk add --no-cache graphviz
 
