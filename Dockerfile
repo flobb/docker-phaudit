@@ -40,5 +40,7 @@ RUN cd /usr/local/composer; \
         sensiolabs/security-checker; \
     composer clear-cache
 
+RUN chmod -R 777 /usr/local/composer/
+
 ENTRYPOINT ["entrypoint"]
 WORKDIR /srv
