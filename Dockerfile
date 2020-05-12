@@ -1,6 +1,14 @@
-FROM solune/symfony:7.4-alpine-cli
+FROM solune/symfony:7.4-buster-cli
 
-RUN apk add --no-cache graphviz
+RUN buildDeps=" \
+    " \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        $buildDeps \
+        graphviz \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # http://symfony.com/doc/current/performance.html
 RUN echo "memory_limit = 2048M" >> /usr/local/etc/php/zzphaudit.ini \
@@ -42,5 +50,6 @@ RUN cd /usr/local/composer; \
 
 RUN chmod -R 777 /usr/local/composer/
 
-ENTRYPOINT ["entrypoint"]
 WORKDIR /srv
+ENTRYPOINT ["entrypoint"]
+CMD ["/bin/bash"]
