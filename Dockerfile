@@ -1,4 +1,4 @@
-FROM solune/symfony:7.4-buster-cli
+FROM solune/symfony:7.3-cli
 
 RUN buildDeps=" \
     " \
@@ -21,10 +21,9 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /usr/local/composer
 
 RUN cd /usr/local/composer; \
-    composer global init --no-interaction; \
+    composer global init --no-interaction --name phaudit/phaudit; \
     composer global require --optimize-autoloader \
-        bamarni/composer-bin-plugin \
-        hirak/prestissimo; \
+        bamarni/composer-bin-plugin; \
     composer bin phpmetrics require --optimize-autoloader \
         phpmetrics/phpmetrics; \
     composer bin phpstan require --optimize-autoloader \
